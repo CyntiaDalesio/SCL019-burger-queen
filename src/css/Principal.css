@@ -19,22 +19,25 @@ button {
     justify-items: center;
     padding: 20px;
     margin: 20px;
-
+    background-color: #FFA831;
+     border-radius: 15px;
+  
 }
 
 .btn-warning {
     background-color: #FFA831;
     border-radius: 15px;
-    width: 284px;
-    height: 82px;
-    left: 216px;
-    top: 352px;
+    width: 10rem;
+    height: 6rem;
+    /* left: 216px;
+    top: 352px; */
+}
+.btn-large {
+    width: 20rem;
+    height: 7rem;
 }
 
-.Des {
-    width: 100px;
-    align-content: flex-start;
-}
+
 
 #food {
     width: 250px;
@@ -66,3 +69,17 @@ Link {
     grid: gap;
     background-color: white;
 }
+.seleccion-Menu{
+    background-color: rgb(255, 255, 255);
+   width: 49%;
+    min-height: auto;
+}
+.container{
+    align-content: center;
+   
+}
+.btn-order{
+    width: 10rem;
+    height: 6rem;
+    }
+ 
