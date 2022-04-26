@@ -5,6 +5,9 @@ import Buttons from './Buttons.js';
 import { Link } from 'react-router-dom';
 import Breakfast from './Breakfast.js';
 import Lunch from './Lunch.js';
+import Order from './Order.js';
+import Add from './Add.js';
+import Delete from './Delete.js';
 function Menus(props) {
 
     return (
@@ -54,16 +57,21 @@ function Menus(props) {
                         </div>
                     </div>
                     <div className='col-6 seleccion-Menu'>
-                        <div className='d-flex flex-column bd-highlight mb-3'>
-                            <div className='p-2 bd-highlight'>
-                            <p>Pedido: 02020020</p>
-                            <p>Mesero: Juan Perez</p>
-                            <textarea placeholder='Nombre Cliente'></textarea>
+                        <div className='d-flex flex-column  mb-3'>
+                            <div className='p-2'>
+                                <p>Pedido: 02020020</p>
+                                <p>Mesero: Juan Perez</p>
+                                <textarea className="form-control" placeholder='Nombre Cliente'></textarea>
+                                <p>Mesa</p>
+                                <input type="number" id="tentacles" name="tentacles"
+                                    min="1" max="10" defaultValue={1}></input>
                             </div>
-                            <div className="orderes">
-                                <Lunch/>
+                            <div className="orderes d-flex flex-row  mb-3">
+
+                                <Order />
+
                             </div>
-                            <div className='p-2 bd-highlight d-flex justify-content-center'>
+                            <div className='p-2  d-flex justify-content-center'>
                                 <Buttons name='Crear Pedido' />
                             </div>
                         </div>
