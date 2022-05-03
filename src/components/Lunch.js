@@ -1,8 +1,11 @@
 import React from 'react';
-import data from '../data/menus.js';
+import data from '../data/menus.json';
 import Add from './Add';
 import Delete from './Delete';
 function Lunch(props) {
+    const select = (id) =>{
+        console.log('el id es:',id);
+    }
     return (
         <div>
             <span>
@@ -12,7 +15,7 @@ function Lunch(props) {
                     return (
                         <div className="">
                             
-                            <li className='list-group-item list-group-item-action'>{element.name} ------- {element.price} </li>
+                            <li className='list-group-item list-group-item-action' onClick={() =>select(element.id)}>{element.name} ------- {element.price} </li>
                             
                         </div>
                     )

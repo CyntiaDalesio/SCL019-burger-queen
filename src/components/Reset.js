@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import iconAdd from '../img/iconAdd.png'
-function Add({texto,esBotonDeClic, manejarClic}) {
+function Reset({texto,esBotonDeClic, manejarClic}) {
     // return (
     //     <div>
     //          <Link to='/'>
@@ -13,7 +13,7 @@ function Add({texto,esBotonDeClic, manejarClic}) {
 
     return(
 
-<button className={ esBotonDeClic ? 'button-add-items' : 'button-reset-items' }
+<button className={ esBotonDeClic ? 'button-Add-Items' : 'button-reset-items' }
 onClick={manejarClic}
 >
     {texto}
@@ -22,4 +22,4 @@ onClick={manejarClic}
     );
 }
 
-export default Add;
+export default Reset;
