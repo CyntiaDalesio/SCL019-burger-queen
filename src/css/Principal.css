@@ -92,11 +92,18 @@ border-radius: 5%;
 
  }
  .button-reset-items{
+     visibility: visible;
     margin: 0%;
     padding: 0%;
     border-radius: 5%; 
+    /* background-color: black; */
 /* background-image: url('https://img.icons8.com/ios-filled/50/000000/add--v1.png'); */
  }
+ /* .reset{
+     background-image: url('https://img.icons8.com/ios-filled/50/000000/add--v1.png');
+     background-repeat: no-repeat;
+overflow: hidden;
+ } */
  .button-reset-items:hover{
 background-color: #f1dc69;
  }
@@ -112,4 +119,3 @@ background-color: #f1dc69;
      } 
      
   
-   
