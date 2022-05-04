@@ -14,7 +14,7 @@ function Reset({texto,esBotonDeClic, manejarClic}) {
     return(
 
 <button className={ esBotonDeClic ? 'button-Add-Items' : 'button-reset-items' }
-onClick={manejarClic}
+onClick={() =>manejarClic()}
 >
     {texto}
 {/* <img id='add-items' src={iconAdd} alt='Agregar items'></img> */}

@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import data from '../data/menus.json';
+import {UserContent} from '../Usecontext/UserContent'
 
-function Breakfast(props) {
-    const select = (id) =>{
-        console.log('el id es:',id);
-    }
+function Breakfast() {
+   
+    const {cart,setCart} = useContext(UserContent);
+    const addcart = (id,price,name) =>{
+
+        setCart([...cart,{ id: id, name: name, price: price }]
+            );
+        }
     return (
         <div>
             <span>
@@ -22,8 +27,8 @@ function Breakfast(props) {
 
                             return (
 
-                                <tr >
-                                    <td onClick={() =>select(element.id)}> {element.name} </td>
+                                <tr key={element.id} >
+                                    <td onClick={() =>addcart(element.id,element.price,element.name)}> {element.name} </td>
                                     <td>$ {element.price}</td>
                                 </tr>
 
