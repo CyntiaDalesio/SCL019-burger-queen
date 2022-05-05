@@ -21,7 +21,7 @@ button {
     margin: 20px;
     background-color: #FFA831;
     border-radius: 15px;
-  
+
 }
 
 .btn-warning {
@@ -29,9 +29,8 @@ button {
     border-radius: 15px;
     width: 10rem;
     height: 6rem;
-    /* left: 216px;
-    top: 352px; */
 }
+
 .btn-large {
     width: 20rem;
     height: 7rem;
@@ -69,53 +68,61 @@ Link {
     grid: gap;
     background-color: white;
 }
-.seleccion-Menu{
+
+.seleccion-Menu {
     background-color: rgb(255, 255, 255);
-   width: 49%;
+    width: 49%;
     min-height: auto;
 }
-.container{
+
+.container {
     align-content: center;
-   
+
 }
-.btn-order{
+
+.btn-order {
     width: 10rem;
     height: 6rem;
-    }
- .button-add-items{
-     margin: 0%;
-     padding: 0%;
-/* width: ;
-height: ;
-*/
-border-radius: 5%; 
+}
 
- }
- .button-reset-items{
-     visibility: visible;
+.button-add-items {
     margin: 0%;
     padding: 0%;
-    border-radius: 5%; 
+    border-radius: 5%;
+
+}
+
+.button-reset-items {
+    visibility: visible;
+    margin: 0%;
+    padding: 0%;
+    border-radius: 5%;
     /* background-color: black; */
-/* background-image: url('https://img.icons8.com/ios-filled/50/000000/add--v1.png'); */
- }
- /* .reset{
+    /* background-image: url('https://img.icons8.com/ios-filled/50/000000/add--v1.png'); */
+}
+
+/* .reset{
      background-image: url('https://img.icons8.com/ios-filled/50/000000/add--v1.png');
      background-repeat: no-repeat;
 overflow: hidden;
  } */
- .button-reset-items:hover{
-background-color: #f1dc69;
- }
- .button-add-items:hover{
+.button-reset-items:hover {
     background-color: #f1dc69;
-     }
+}
 
-     .active-content {
-         display: block;
-     }
-     .content {
-         display: none;
-     } 
-     
-  
+.button-add-items:hover {
+    background-color: #f1dc69;
+}
+
+.active-content {
+    display: block;
+}
+
+.content {
+    display: none;
+}
+
+.table:click {
+
+    background-color: #FFA831;
+}

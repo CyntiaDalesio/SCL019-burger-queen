@@ -20,7 +20,10 @@ function Menus() {
         <Fragment>
             <div className='container d-flex bd-highlight'>
                 <div className="p-2 flex-fill bd-highlight">
-                    <Logo />
+                    <Link to='/'>
+                        <Logo />
+                    </Link>
+
                 </div>
                 <div className="p-2 d-flex flex-fill bd-highlight justify-content-end">
                     <Link to='*'>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import iconAdd from '../img/iconAdd.png'
-function Reset({texto,esBotonDeClic, manejarClic}) {
+function Reset({texto,esBotonDeClic,keys,rest}) {
     // return (
     //     <div>
     //          <Link to='/'>
@@ -14,7 +14,7 @@ function Reset({texto,esBotonDeClic, manejarClic}) {
     return(
 
 <button className={ esBotonDeClic ? 'button-Add-Items' : 'button-reset-items' }
-onClick={() =>manejarClic()}
+onClick={()=>rest(keys)}
 >
     {texto}
 {/* <img id='add-items' src={iconAdd} alt='Agregar items'></img> */}

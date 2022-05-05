@@ -1,26 +1,29 @@
 import React,{useContext} from 'react';
-import data from '../data/menus.json';
 import Add from './Add.js';
-import Counter from './Counter';
 import Delete from './Delete.js';
 import Reset from './Reset';
 import { useState } from 'react';
 import {UserContent} from '../Usecontext/UserContent'
 
 function Order() {
-    const [numClics, setNumClics] = useState(1);
     const {cart,setCart} = useContext(UserContent);
 
-    const manejarClic = () => {
-        setNumClics(numClics + 1);
-    }
-    const reiniciarContador = () => {
-        setNumClics(1);
-    }
+    const removeCart = (id) => {
+        setCart(cart.filter((item) => item.id !== id));
+      }
 
-
-
-
+      const addCant = (id) => {
+        const arrCard = cart.map((item) =>
+        item.id === id ? { ...item, cant: item.cant + 1 } : item
+      );
+      setCart(arrCard);
+      }
+      const restCant = (id) => {
+        const arrCard = cart.map((item) =>
+        item.id === id ? { ...item,  cant: item.cant - 1 } : item
+      );
+      setCart(arrCard);
+      }
 
     return (
         <div>
@@ -42,25 +45,26 @@ function Order() {
 
 
                         {cart.map(element => {
-
                             return (
                                 <tbody>
                                     <tr key= {element.id}>
-                                        <td> <Counter numClics={numClics} /></td>
+                                        <td> {element.cant}</td>
                                         <th> <Add
                                             texto='Add'
                                             esBotonDeClic={true}
-                                            manejarClic={() =>manejarClic()}
+                                           keys={element.id}
+                                           add={addCant}
                                         /></th>
                                         <th className='reset'> <Reset
                                             texto='Reset'
                                             esBotonDeClic={false}
-                                            manejarClic={()=>reiniciarContador()}
+                                            keys={element.id}
+                                            rest={restCant}
                                         /></th>
 
                                         <td>{element.name}</td>
                                         <td>$ {element.price}</td>
-                                        <td><Delete /></td>
+                                        <td onClick={()=>removeCart(element.id)}><Delete /></td>
                                     </tr>
 
                                 </tbody>
