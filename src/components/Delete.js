@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import iconDelete from '../img/iconDelete.png'
 
 function Delete() {

@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import Add from './Add.js';
 import Delete from './Delete.js';
 import Reset from './Reset';
-import { useState } from 'react';
 import { UserContent } from '../Usecontext/UserContent'
 
 function Order() {
+    // funciones de agregar, restar y eliminar items del pedido
+    let numberOrder = 1;
     const { cart, setCart } = useContext(UserContent);
 
 
@@ -30,20 +31,21 @@ function Order() {
          return   item.id === id ? { ...item, cant: 1 } : item
 
         }
+
     });
         setCart(arrCard);
     }
 
 
+    //calcular el total del pedido
     let priceInitial = 0;
     const total = cart.reduce((acc, curr) => acc + curr.price * curr.cant, priceInitial);
 
 
     return (
-        <div>
+        <section key={numberOrder}>
 
-
-            <div className='d-flex align-items-start'>
+            <article className='d-flex align-items-start'>
                 <div className="">
                     <table className="table">
                         <thead>
@@ -85,32 +87,29 @@ function Order() {
 
                     </table>
                 </div>
-            </div>
+            </article>
             <textarea className="form-control" placeholder='Agregar Detalle'></textarea>
-            <hr className='py-1'></hr>
-            <div className="div">
+            <article className="div">
                 <table className="table">
                     <thead>
                         <tr>
                             <th scope="col"></th>
                             <th scope="col"></th>
                           
-                          
-
                         </tr>
                     </thead>
                     <tbody>
                       
-                        <tr>
+                        <tr key={total}>
                             <th scope="row">Total</th>
                             <td colSpan="2"></td>
                             <td>$ {total}</td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </article>
 
-        </div>
+        </section>
     );
 }
 

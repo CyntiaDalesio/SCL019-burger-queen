@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 function Footer(props) {
     return (
-        <div>
+        <footer>
             <Link to='/'>
                 <img id='back' src={require('../img/back.png')} alt=''></img>
             </Link>
-        </div>
+        </footer>
     );
 }
 

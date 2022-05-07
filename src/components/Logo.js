@@ -2,9 +2,9 @@ import React from 'react';
 
 function Logo(props) {
     return (
-        <div>
+        <figure>
              <img id='food' src={require('../img/food.gif')} alt=''></img>
-        </div>
+        </figure>
     );
 }
 

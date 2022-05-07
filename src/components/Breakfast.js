@@ -3,7 +3,7 @@ import data from '../data/menus.json';
 import {UserContent} from '../Usecontext/UserContent'
 
 function Breakfast() {
-   
+
     const {cart,setCart} = useContext(UserContent);
     const addcart = (element) =>{
         if(cart.some(item=> item.id===element.id)){
@@ -20,8 +20,7 @@ function Breakfast() {
             
              }
     return (
-        <div>
-            <span>
+        <section>
                 <table className="table table-dark table-striped table-hover md-5">
                     <thead>
                         <tr>
@@ -45,8 +44,7 @@ function Breakfast() {
                         })}
                     </tbody>
                 </table>
-            </span>
-        </div>
+        </section>
     );
 }
 
