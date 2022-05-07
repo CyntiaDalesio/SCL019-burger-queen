@@ -3,17 +3,25 @@ import data from '../data/menus.json';
 import {UserContent} from '../Usecontext/UserContent'
 
 function Breakfast() {
-   
-    const {cart,setCart} = useContext(UserContent);
-    const addcart = (id,price,name) =>{
 
-        setCart([...cart,{ id: id, name: name, price: price }]
-            );
+    const {cart,setCart} = useContext(UserContent);
+    const addcart = (element) =>{
+        if(cart.some(item=> item.id===element.id)){
+         const arrCard = cart.map((item) =>
+         item.id === element.id ? { ...item, cant: item.cant + 1 } : item
+       );
+       setCart(arrCard);
+       
+     
+        }else{
+         setCart([...cart,{ id: element.id, name: element.name, price: element.price, cant:1 }]
+             );
         }
+            
+             }
     return (
-        <div>
-            <span>
-                <table className="table table-dark table-striped table-hover">
+        <section>
+                <table className="table table-dark table-striped table-hover md-5">
                     <thead>
                         <tr>
                             <th scope="name">Nombre</th>
@@ -27,23 +35,16 @@ function Breakfast() {
 
                             return (
 
-                                <tr key={element.id} >
-                                    <td onClick={() =>addcart(element.id,element.price,element.name)}> {element.name} </td>
+                                <tr key={element.id}>
+                                    <td onClick={() =>addcart(element)}> {element.name} </td>
                                     <td>$ {element.price}</td>
                                 </tr>
-
-
-                                // <li className='list-group-item list-group-item-action'>{element.name} ---------{element.price} </li>
-
-
-
                             )
 
                         })}
                     </tbody>
                 </table>
-            </span>
-        </div>
+        </section>
     );
 }
 

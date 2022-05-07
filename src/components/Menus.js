@@ -1,14 +1,12 @@
 import React, { Fragment } from 'react';
-import data from '../data/menus.json';
 import Logo from './Logo.js';
 import Buttons from './Buttons.js';
 import { Link } from 'react-router-dom';
 import Breakfast from './Breakfast.js';
 import Lunch from './Lunch.js';
 import Order from './Order.js';
-import Add from './Add.js';
-import Delete from './Delete.js';
 import { useState } from 'react';
+
 function Menus() {
 
     const [toggleState, setToggleState] = useState(1);
@@ -18,10 +16,13 @@ function Menus() {
     }
     return (
         <Fragment>
-            <div className='container d-flex bd-highlight'>
-                <div className="p-2 flex-fill bd-highlight">
-                    <Logo />
-                </div>
+            <header className='container d-flex bd-highlight'>
+                <figure className="p-2 flex-fill bd-highlight">
+                    <Link to='/'>
+                        <Logo />
+                    </Link>
+
+                </figure>
                 <div className="p-2 d-flex flex-fill bd-highlight justify-content-end">
                     <Link to='*'>
 
@@ -31,7 +32,7 @@ function Menus() {
                 </div>
 
 
-            </div>
+            </header>
 
             <div className='container-fluid'>
                 <div className='row d-flex justify-content-around'>
