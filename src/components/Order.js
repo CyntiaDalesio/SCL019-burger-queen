@@ -64,14 +64,10 @@ function Order() {
                                     <tr key={element.id}>
                                         <th scope='row'> {element.cant}</th>
                                         <th> <Add
-                                            texto='Sumar'
-                                            esBotonDeClic={true}
                                             keys={element.id}
                                             add={addCant}
                                         /></th>
                                         <th className='reset'> <Reset
-                                            texto='Restar'
-                                            esBotonDeClic={false}
                                             keys={element.id}
                                             rest={restCant}
                                         /></th>
@@ -93,7 +89,7 @@ function Order() {
             <textarea className="form-control" placeholder='Agregar Detalle'></textarea>
             <hr className='py-1'></hr>
             <div className="div">
-                <table class="table">
+                <table className="table">
                     <thead>
                         <tr>
                             <th scope="col"></th>
@@ -107,7 +103,7 @@ function Order() {
                       
                         <tr>
                             <th scope="row">Total</th>
-                            <td colspan="2"></td>
+                            <td colSpan="2"></td>
                             <td>$ {total}</td>
                         </tr>
                     </tbody>
