@@ -4,30 +4,25 @@ import data from '../data/menus.json';
 // import Delete from './Delete';
 import {UserContent} from '../Usecontext/UserContent'
 
-function Lunch(props) {
+function Lunch() {
 
    const {cart,setCart} = useContext(UserContent);
 
-    const select = (id,price,name) =>{
-        console.log('el id es:',id);
+    const addcart = (element) =>{
+   if(cart.some(item=> item.id===element.id)){
+    const arrCard = cart.map((item) =>
+    item.id === element.id ? { ...item, cant: item.cant + 1 } : item
+  );
+  setCart(arrCard);
+  
 
+   }else{
+    setCart([...cart,{ id: element.id, name: element.name, price: element.price, cant:1 }]
+        );
+   }
+       
+        }
 
-    }
-
-    // function addToCart(item) {
-    //     setCart([...cart, { ...item }]);
-    //     console.log("estamos dando click a los elementos");
-    // }
-
-    const addcart = (id,price,name) =>{
-
-        setCart([...cart,{ id: id, name: name, price: price }]
-            );
-      
-
-        // setCart();
-        console.log();
-    }
 
     return (
         <div>
@@ -44,7 +39,7 @@ function Lunch(props) {
 
                     return (
                         <tr key={element.id} >
-                                    <td onClick={() =>addcart(element.id,element.price,element.name)}> {element.name} </td>
+                                    <td onClick={() =>addcart(element)}> {element.name} </td>
                                     <td>$ {element.price}</td>
                                 </tr>
 

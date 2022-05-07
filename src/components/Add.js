@@ -1,17 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import iconAdd from '../img/iconAdd.png'
-function Add({texto,esBotonDeClic,keys,add}) {
-   
-    return(
+function Add({  esBotonDeClic, keys, add }) {
 
-<button className={ esBotonDeClic ? 'button-add-items' : 'button-reset-items' }
+    return (
+        <figure className={esBotonDeClic ? 'button-Add-Items' : 'button-reset-items'}
+            onClick={() => add(keys)}>
 
-onClick={()=>add(keys)}
->
-    {texto}
-{/* <img id='add-items' src={iconAdd} alt='Agregar items'></img> */}
-</button>        
+            <img id='add-items' src={iconAdd} alt='Agregar items'></img>
+
+        </figure>
     );
 }
 

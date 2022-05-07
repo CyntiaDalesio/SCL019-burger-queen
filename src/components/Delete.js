@@ -4,11 +4,11 @@ import iconDelete from '../img/iconDelete.png'
 
 function Delete() {
     return (
-        <div>
+        <figure>
            
                 <img id='delete-items' src={iconDelete} alt='Borrar item'></img>
           
-        </div>
+        </figure>
     );
 }
 
