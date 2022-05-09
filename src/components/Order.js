@@ -6,7 +6,6 @@ import { UserContent } from '../Usecontext/UserContent'
 
 function Order() {
     // funciones de agregar, restar y eliminar items del pedido
-    let numberOrder = 1;
     const { cart, setCart } = useContext(UserContent);
 
 
@@ -43,7 +42,7 @@ function Order() {
 
 
     return (
-        <section key={numberOrder}>
+        <section >
 
             <article className='d-flex align-items-start'>
                 <div className="">
@@ -88,7 +87,6 @@ function Order() {
                     </table>
                 </div>
             </article>
-            <textarea className="form-control" placeholder='Agregar Detalle'></textarea>
             <article className="div">
                 <table className="table">
                     <thead>
