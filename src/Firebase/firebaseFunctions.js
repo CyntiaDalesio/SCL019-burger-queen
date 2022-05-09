@@ -12,8 +12,8 @@ export const createOrder = async (cart, nameClient, addDetalls, numOrder, numTab
         console.log(cart, nameClient, addDetalls, numOrder, numTable, nameWaiter);
         const docRef = await addDoc(OrdersCollection, {
             Order: cart, 
-            nameClient: 'nameClient' || null,
-            addDetalls: 'addDetalls'|| null,
+            nameClient: nameClient || null,
+            addDetalls: addDetalls|| null,
             numOrder: numOrder+ 1 || null,
             numTable: numTable|| null,
             nameWaiter: nameWaiter|| null,

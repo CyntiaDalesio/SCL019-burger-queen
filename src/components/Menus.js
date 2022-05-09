@@ -21,7 +21,7 @@ function Menus() {
 //-------------------------------
 
 const [nameClient, setNameClient] = useState(null);
-const [addDetalls,setAddDetalls] = useState(null);
+const [addDetalls,setAddDetalls] = useState('');
 const [numOrder,setNumOrder] = useState(null);
 const [numTable, setNumTable] = useState(null);
 const [nameWaiter,setNameWaiter] = useState(null);
@@ -112,7 +112,8 @@ const getOrdersData = async =>{
                                 <p>Pedido: 02020020</p>
                                 <p>Mesero: Juan Perez</p>
                                 <textarea className="form-control" placeholder='Nombre Cliente'
-                                //   onChange={setNameClient}
+                                value={nameClient}
+                                onChange={(e) =>setNameClient(e.target.value)}
                                 ></textarea>
                                 <p>Mesa</p>
                                 <input type="number" id="tentacles" name="tentacles"
@@ -125,8 +126,8 @@ const getOrdersData = async =>{
                                 <Order />
 
                             </section>
-                            <textarea className="form-control" placeholder='Agregar Detalle' 
-                            onChange={setAddDetalls}
+                            <textarea className="form-control" placeholder='Agregar Detalle' value={addDetalls}
+                            onChange={(e) =>setAddDetalls(e.target.value)}
                             ></textarea>
 
                             <footer className='p-2  d-flex justify-content-center'>
