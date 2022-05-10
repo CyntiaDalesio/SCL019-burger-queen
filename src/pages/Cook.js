@@ -41,6 +41,7 @@ function Cook(props) {
                                                 <th scope="col">Cant</th>
                                                 <th scope="col">Nombre</th>
                                             </tr>
+                                            
                                         </thead>
 
                      {orders.map(element => {
@@ -53,10 +54,11 @@ function Cook(props) {
                                         return (
                                             <table className="table table-dark">
                                                 <tbody>
-                                                    <tr>
+                                                    <td>
                                                         <td> {item.cant}</td>
                                                         <td> {item.name}</td>
-                                                    </tr>
+                                                    </td>
+                                                  
                                                 </tbody>
                                             </table>
                                     ) ;
@@ -64,6 +66,7 @@ function Cook(props) {
                                     <td> {element.data().addDetalls}</td>
                                     <td> {element.data().nameWaiter}</td>
                                     <td>{element.data().numTable}</td>
+                                    <td> {element.data().numTable}</td>
                                     <td> {element.data().status}</td>
                                     <td> <button className='btn-warning btn-large'>Listo</button></td>
                                 </tbody>
