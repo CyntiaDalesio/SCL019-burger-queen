@@ -14,7 +14,7 @@ export const createOrder = async (cart, nameClient, addDetalls, numOrder, numTab
             Order: cart, 
             nameClient: nameClient || null,
             addDetalls: addDetalls|| null,
-            numOrder: numOrder+ 1 || null,
+            numOrder: numOrder + 1 || null,
             numTable: numTable|| null,
             nameWaiter: nameWaiter|| null,
             status : 'pendiente',
