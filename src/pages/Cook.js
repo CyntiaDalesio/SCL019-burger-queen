@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Logo from '../components/Logo';
-import { getOrders } from '../Firebase/firebaseFunctions';
+import { getOrders, changeStatusReady } from '../Firebase/firebaseFunctions';
 import { Link } from 'react-router-dom';
 function Cook(props) {
 
@@ -14,20 +14,28 @@ function Cook(props) {
 
         const p = await getOrders();
 
-        console.log(p.docs[0].data());
+        // console.log(p.docs[0].data());
         setOrders(p.docs);
         // setOrders(p.docs[0].data())
     }
+
+    const changeStatus = async (element) => {
+        console.log('elemento clicleado', element);
+        const changeStatus = await changeStatusReady(element);
+        console.log(changeStatus);
+    }
     return (
         <div>
-            <Logo />
+            <Link to='/'>
+                <Logo />
+            </Link>
 
             <article className='d-flex align-items-start'>
                 <div className="">
-                    <table className="table table-dark -responsive-md">
+                    <table className="table table-dark">
                         <thead>
                             <tr>
-                                <th scope="col" colSpan="2">Pedidos</th>
+                                <th scope="col" colSpan="1">Pedidos</th>
                                 <th scope="col" colSpan="1">Detalle</th>
                                 <th scope="col" colSpan="1">Nombre del Mesero</th>
                                 <th scope="col" colSpan="1">Mesa</th>
@@ -35,19 +43,19 @@ function Cook(props) {
                                 <th scope="col" colSpan="1">Cambiar Estado</th>
                             </tr>
                         </thead>
-                        
-                                      <thead>
-                                            <tr>
-                                                <th scope="col">Cant</th>
-                                                <th scope="col">Nombre</th>
-                                            </tr>
-                                            
-                                        </thead>
 
-                     {orders.map(element => {
-                         console.log('elemente',element.data());
-                         console.log('detalles',element.data().Order);
-                        // let detailsOrder =  element.data().Order;
+                        <thead>
+                            <tr>
+                                {/* <th scope="col">Cant</th> */}
+                                <th scope="col">Nombre</th>
+                            </tr>
+
+                        </thead>
+
+                        {orders.map(element => {
+                            //  console.log('elemente',element.data());
+                            //  console.log('detalles',element.data().Order);
+                            // let detailsOrder =  element.data().Order;
                             return (
                                 <tbody>
                                     {element.data()?.Order?.map(item => {
@@ -58,20 +66,20 @@ function Cook(props) {
                                                         <td> {item.cant}</td>
                                                         <td> {item.name}</td>
                                                     </td>
-                                                  
+
                                                 </tbody>
                                             </table>
-                                    ) ;
-                                  })}  
+                                        );
+                                    })}
                                     <td> {element.data().addDetalls}</td>
                                     <td> {element.data().nameWaiter}</td>
                                     <td>{element.data().numTable}</td>
                                     <td> {element.data().numTable}</td>
                                     <td> {element.data().status}</td>
-                                    <td> <button className='btn-warning btn-large'>Listo</button></td>
+                                    <td> <button className='btn-warning btn-large' onClick={() => changeStatus(element.id)}>Listo</button></td>
                                 </tbody>
                             )
-                        })} 
+                        })}
 
                     </table>
                 </div>
@@ -82,9 +90,9 @@ function Cook(props) {
             </Link>
         </div>
     );
-   
-    
+
+
 }
-                    
+
 
 export default Cook;

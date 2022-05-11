@@ -39,4 +39,12 @@ export const getOrders = async () => {
 // await deleteDoc(doc(db, 'orders'));
 
 // // UPDATE
-// await updateDoc(doc(db, 'orders'), {})
+
+export const changeStatusReady= async(docum) =>{
+
+    await updateDoc(doc(OrdersCollection,docum), {
+
+        status: 'Listo'
+    })
+console.log('estado en listo ');
+}
