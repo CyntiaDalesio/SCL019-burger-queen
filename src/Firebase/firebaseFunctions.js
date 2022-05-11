@@ -1,5 +1,5 @@
 import { db } from './firebase';
-import { collection, getDocs, getDoc, query, doc, addDoc, deleteDoc, updateDoc, Timestamp } from "firebase/firestore";
+import { collection, getDocs, getDoc, query, doc, addDoc, deleteDoc, updateDoc, Timestamp, orderBy } from "firebase/firestore";
 
 const OrdersCollection = collection(db, 'orders');
 
@@ -10,11 +10,11 @@ export const createOrder = async (cart, nameClient, addDetalls, numOrder, numTab
         console.log('estoy en create order');
 
         console.log(cart, nameClient, addDetalls, numOrder, numTable, nameWaiter);
-        const docRef = await addDoc(collection(db," orders"), {
+        const docRef = await addDoc(OrdersCollection, {
             Order: cart, 
-            nameClient: 'nameClient' || null,
-            addDetalls: 'addDetalls'|| null,
-            numOrder: numOrder+ 1 || null,
+            nameClient: nameClient || null,
+            addDetalls: addDetalls|| null,
+            numOrder: numOrder + 1 || null,
             numTable: numTable|| null,
             nameWaiter: nameWaiter|| null,
             status : 'pendiente',
@@ -30,7 +30,7 @@ export const createOrder = async (cart, nameClient, addDetalls, numOrder, numTab
 
 // CONSULTA
 export const getOrders = async () => {
-    const result = await getDocs(query(OrdersCollection));
+    const result = await getDocs(query(OrdersCollection), orderBy('dateOrder', 'desc'));
     return result;
 
 }
@@ -39,4 +39,12 @@ export const getOrders = async () => {
 // await deleteDoc(doc(db, 'orders'));
 
 // // UPDATE
-// await updateDoc(doc(db, 'orders'), {})
+
+export const changeStatusReady= async(docum) =>{
+
+    await updateDoc(doc(OrdersCollection,docum), {
+
+        status: 'Listo'
+    })
+console.log('estado en listo ');
+}

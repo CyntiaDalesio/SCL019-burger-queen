@@ -1,5 +1,6 @@
 import React from 'react';
 import Menu from './Menu';
+import Cook from './Cook';
 import { Link } from 'react-router-dom';
 import Buttons from '../components/Buttons';
 import Logo from '../components/Logo';

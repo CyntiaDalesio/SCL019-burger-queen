@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 import Breakfast from './Breakfast.js';
 import Lunch from './Lunch.js';
 import Order from './Order.js';
-import { useState, useEffect ,useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { createOrder, getOrders } from '../Firebase/firebaseFunctions';
-import {UserContent} from '../Usecontext/UserContent'
+import { UserContent } from '../Usecontext/UserContent'
 
 function Menus() {
-//---------------------------
+    //---------------------------
     const [toggleState, setToggleState] = useState(1);
     const toggleTab = (index) => {
         setToggleState(index);
@@ -18,37 +18,25 @@ function Menus() {
     }
     const { cart, setCart } = useContext(UserContent);
 
-//-------------------------------
+    //-------------------------------
 
-const [nameClient, setNameClient] = useState(null);
-const [addDetalls,setAddDetalls] = useState(null);
-const [numOrder,setNumOrder] = useState(null);
-const [numTable, setNumTable] = useState(null);
-const [nameWaiter,setNameWaiter] = useState(null);
+    const [nameClient, setNameClient] = useState('');
+    const [addDetalls, setAddDetalls] = useState('');
+    const [numOrder, setNumOrder] = useState('');
+    const [numTable, setNumTable] = useState('');
+    const [nameWaiter, setNameWaiter] = useState('');
 
-// const nameClients = (name) =>{
+    const saveOrder = (e) => {
+        console.log('saveOrder');
+        e.preventDefault();
+        createOrder(cart, nameClient, addDetalls, numOrder, numTable, nameWaiter);
 
-//     setNameClient(name);
+    }
+    useEffect(() => {
 
-// }
-const saveOrder = (e) => {
-    console.log('saveOrder');
-    e.preventDefault();
-    createOrder(cart,nameClient,addDetalls,numOrder,numTable,nameWaiter);
-  
-}
-useEffect( ()=>{
+    }, []);
 
-}, []);
 
-const getOrdersData = async =>{
-
-// const o = await getOrders();
-
-// console.log(o.docs[0].data());
-
-}
-//------------------------------
     return (
         <Fragment>
             <header className='container d-flex bd-highlight'>
@@ -75,15 +63,15 @@ const getOrdersData = async =>{
                         <div className='row'>
                             <div className={toggleState === 1 ? 'col-6 tabs active-tabs' : ' col-6 tabs'}>
 
-                                <button className="btn btn-warning" 
-                                onClick={() => toggleTab(1)}
+                                <button className="btn btn-warning"
+                                    onClick={() => toggleTab(1)}
                                 >Desayuno</button>
 
                             </div>
                             <div className={toggleState === 2 ? 'col-6 tabs active-tabs' : ' col-6 tabs'}>
 
                                 <button className="btn btn-warning"
-                                onClick={() => toggleTab(2)}
+                                    onClick={() => toggleTab(2)}
 
                                 >Almuerzo</button>
 
@@ -109,24 +97,40 @@ const getOrdersData = async =>{
                     <form className='col-6 seleccion-Menu' onSubmit={saveOrder}>
                         <div className='d-flex flex-column  mb-3'>
                             <header className='p-2'>
-                                <p>Pedido: 02020020</p>
-                                <p>Mesero: Juan Perez</p>
-                                <textarea className="form-control" placeholder='Nombre Cliente'
-                                //   onChange={setNameClient}
-                                ></textarea>
-                                <p>Mesa</p>
-                                <input type="number" id="tentacles" name="tentacles"
-                                    min="1" max="10" defaultValue={1}
-                                    onChange={setNumTable}
-                                    ></input>
+                                {/* <p>Pedido: 02020020</p> */}
+                                <div className='form-group row'>
+                                    <label className='col-sm-2 col-form-label'>Mesero:</label>
+                                    <div className="col-sm-10">
+                                        <textarea className="form-control" placeholder='Nombre del mesero' value={nameWaiter}
+                                            onChange={(e) => setNameWaiter(e.target.value)}
+                                        ></textarea>
+                                    </div>
+                                </div>
+                                <div className='form-group row'>
+                                    <label className='col-sm-2 col-form-label'>Cliente:</label>
+                                    <div className="col-sm-10">
+                                        <textarea className="form-control" placeholder='Nombre Cliente'
+                                            value={nameClient}
+                                            onChange={(e) => setNameClient(e.target.value)}
+                                        ></textarea>
+                                    </div>
+                                </div>
+
+                                <select className="form-select mesas" onChange={(e) => setNumTable(e.target.value)}>
+                                    <option >N° de mesa</option>
+                                    <option value={setNumTable}>1</option>
+                                    <option value={setNumTable}>2</option>
+                                    <option value={setNumTable}>3</option>
+                                </select>
+
                             </header>
                             <section className="orderes d-flex flex-row  mb-3">
 
                                 <Order />
 
                             </section>
-                            <textarea className="form-control" placeholder='Agregar Detalle' 
-                            onChange={setAddDetalls}
+                            <textarea className="form-control" placeholder='Agregar Detalle' value={addDetalls}
+                                onChange={(e) => setAddDetalls(e.target.value)}
                             ></textarea>
 
                             <footer className='p-2  d-flex justify-content-center'>
