@@ -3,7 +3,6 @@ import { collection, getDocs, getDoc, query, doc, addDoc, deleteDoc, updateDoc, 
 
 const OrdersCollection = collection(db, 'orders');
 
-// ALTA
 export const createOrder = async (cart, nameClient, addDetalls, numOrder, numTable, nameWaiter) => {
 
     try {
@@ -28,17 +27,11 @@ export const createOrder = async (cart, nameClient, addDetalls, numOrder, numTab
 }
 
 
-// CONSULTA
 export const getOrders = async () => {
     const result = await getDocs(query(OrdersCollection), orderBy('dateOrder', 'desc'));
     return result;
 
 }
-
-// // REMOVE
-// await deleteDoc(doc(db, 'orders'));
-
-// // UPDATE
 
 export const changeStatusReady= async(docum) =>{
 

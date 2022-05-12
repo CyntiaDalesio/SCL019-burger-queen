@@ -14,15 +14,12 @@ function Cook(props) {
 
         const p = await getOrders();
 
-        // console.log(p.docs[0].data());
         setOrders(p.docs);
-        // setOrders(p.docs[0].data())
     }
 
     const changeStatus = async (element) => {
         console.log('elemento clicleado', element);
         const changeStatus = await changeStatusReady(element);
-        console.log(changeStatus);
     }
     return (
         <div>

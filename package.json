@@ -39,5 +39,11 @@
   },
   "devDependencies": {
     "eslint": "^8.15.0"
+  },
+
+  "hosting": {
+    "public": "build"
+    
   }
+  
 }
