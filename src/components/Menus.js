@@ -16,6 +16,7 @@ function Menus() {
         setToggleState(index);
 
     }
+
     const { cart, setCart } = useContext(UserContent);
 
     //-------------------------------
@@ -25,6 +26,12 @@ function Menus() {
     const [numOrder, setNumOrder] = useState('');
     const [numTable, setNumTable] = useState('');
     const [nameWaiter, setNameWaiter] = useState('');
+
+
+    const table = (index) => {
+        setNumTable(index);
+
+    }
 
     const saveOrder = (e) => {
         console.log('saveOrder');
@@ -116,12 +123,23 @@ function Menus() {
                                     </div>
                                 </div>
 
-                                <select className="form-select mesas" onChange={(e) => setNumTable(e.target.value)}>
+                                <div className='form-group row'>
+                                    <label className='col-sm-2 col-form-label'>Mesa:</label>
+                                    <div className="col-sm-10">
+                                        <textarea className="form-control" placeholder='Mesa'
+                                            value={numTable}
+                                            onChange={(e) => setNumTable(e.target.value)}
+                                        ></textarea>
+                                    </div>
+                                </div>
+
+
+                                {/* <select className="form-select mesas" onChange={(e) => table(e.target.value)}>
                                     <option >N° de mesa</option>
                                     <option value={setNumTable}>1</option>
                                     <option value={setNumTable}>2</option>
                                     <option value={setNumTable}>3</option>
-                                </select>
+                                </select> */}
 
                             </header>
                             <section className="orderes d-flex flex-row  mb-3">
